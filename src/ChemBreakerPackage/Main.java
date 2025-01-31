@@ -477,7 +477,6 @@ public class Main extends Thread {
 
 			}
 		}
-		// System.out.println(balanceCoefs.subList(0, balanceCoefs.size()));
 	}
 
 	public static boolean hasElemGreater(ArrayList<Molecule> recat, Molecule compound, boolean isReact) {
