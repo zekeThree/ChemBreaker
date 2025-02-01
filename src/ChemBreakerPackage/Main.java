@@ -17,7 +17,7 @@ public class Main extends Thread {
 	private static ArrayList<Integer> postValRe = new ArrayList<>();
 	private static ArrayList<Integer> postValPr = new ArrayList<>();
 
-	private static ArrayList<Integer> maxCoefs = new ArrayList<>(Arrays.asList(150, 100, 150, 100, 100));
+	private static ArrayList<Integer> maxCoefs = new ArrayList<>(Arrays.asList(100, 100, 100, 100, 100, 100));
 
 	public static void main(String[] args) {
 		String answerBook = "";
@@ -293,42 +293,6 @@ public class Main extends Thread {
 		}
 
 		return balanceCoefs;
-	}
-
-	public static void sum2(ArrayList<Molecule> recat, ArrayList<Molecule> prod, int k, int maxCoef) {
-		if (k > balanceCoefs.size() - 1) {
-			System.out.println("error soultion not in range- Rais the maxCoef||the equation might not be balencable");
-		} else {
-			if (k == 0) {
-				for (int q = 0; q < maxCoef; q++) {
-
-					if (balanceCoefs.get(0) >= maxCoef) {
-						balanceCoefs.set(0, 1);
-						Main.sum2(recat, prod, k + 1, maxCoef);
-					}
-					reCoefs = Main.split(balanceCoefs, recat, true);
-					prCoefs = Main.split(balanceCoefs, recat, false);
-
-					if (Main.isEqual(recat, prod)) {
-						System.out.println("reached end #2");
-						System.out.println(balanceCoefs.subList(0, balanceCoefs.size()));
-						break;
-					}
-					balanceCoefs.set(0, balanceCoefs.get(0) + 1);
-					System.out.println("current attempt" + balanceCoefs.subList(0, balanceCoefs.size()));
-				}
-
-			} else {
-				balanceCoefs.set(k, balanceCoefs.get(k) + 1);
-				if (balanceCoefs.get(k) >= maxCoef) {
-					balanceCoefs.set(k, 1);
-					Main.sum2(recat, prod, k + 1, maxCoef);
-				}
-				System.out.println("current attempt" + balanceCoefs.subList(0, balanceCoefs.size()));
-
-			}
-		}
-		// System.out.println(balanceCoefs.subList(0, balanceCoefs.size()));
 	}
 
 	public static void sum3(ArrayList<Molecule> recat, ArrayList<Molecule> prod, int k, ArrayList<Integer> maxCoefs) {
